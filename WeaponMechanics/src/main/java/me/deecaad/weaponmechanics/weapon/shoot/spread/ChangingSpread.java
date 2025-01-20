@@ -80,7 +80,23 @@ public class ChangingSpread implements Serializer<ChangingSpread> {
         return new ChangingSpread(startingAmount, resetTime, increaseChangeWhen, bounds);
     }
 
-    public record Bounds(boolean resetAfterReachingBound, double min, double max) implements Serializer<Bounds> {
+    public static class Bounds implements Serializer<Bounds> {
+
+        private boolean resetAfterReachingBound;
+        private double min;
+        private double max;
+
+        /**
+         * Default constructor for serializer
+         */
+        public Bounds() {
+        }
+
+        public Bounds(boolean resetAfterReachingBound, double min, double max) {
+            this.resetAfterReachingBound = resetAfterReachingBound;
+            this.min = min;
+            this.max = max;
+        }
 
         /**
          * Checks bounds of spread
