@@ -102,7 +102,7 @@ public abstract class Mechanic implements InlineSerializer<Mechanic> {
 
                 handleTargetersAndConditions(cast.clone()); // clone since targeters modify the cast
             }
-        }, delayBeforePlay, repeatInterval);
+        }, Math.max(delayBeforePlay, 1), Math.max(repeatInterval, 1));
 
         // This allows developers to consume task ids from playing a Mechanic.
         // Good for canceling tasks early.
